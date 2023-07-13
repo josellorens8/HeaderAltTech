@@ -83,7 +83,7 @@ header #header_container {
   top: 0;
   z-index: 99;
   background-color: #ffffff;
-  display: none;
+  display: grid;
   grid-template-columns: 1fr 180px 1fr;
 }
 header #header_container .button_container {
@@ -151,93 +151,103 @@ header #header_container .img_container img:after {
           clip-path: polygon(0 67%, 100% 67%, 100% 100%, 0 100%);
   -webkit-animation-path: polygon(0 67%, 100% 67%, 100% 100%, 0 100%);
 }
+@media screen and (max-width: 480px) {
+  header #header_container {
+    display: none;
+  }
+}
 header #header_container_burguer {
-  display: flex;
-  width: 100%;
-  height: 100px;
-  background-color: #ffffff;
-  position: fixed;
-  align-items: center;
-  justify-content: center;
-}
-header #header_container_burguer .img_container {
-  display: flex;
-  justify-self: center;
-}
-header #header_container_burguer .img_container img {
-  width: 95px;
-  height: 95px;
-  animation: glitch 1s linear infinite;
-}
-header #header_container_burguer .img_container img:before, header #header_container_burguer .img_container img:after {
-  content: attr(title);
-  position: absolute;
-  left: 0;
-}
-header #header_container_burguer .img_container img:before {
-  animation: glitchTop 1s linear infinite;
-  -webkit-clip-path: polygon(0 0, 100%, 100% 33%, 0 33%);
-          clip-path: polygon(0 0, 100%, 100% 33%, 0 33%);
-  -webkit-animation-phat: polygon(0 0, 100% 0, 100% 33%, 0 33%);
-}
-header #header_container_burguer .img_container img:after {
-  animation: glitchBottom 1.5s linear infinite;
-  -webkit-clip-path: polygon(0 67%, 100% 67%, 100% 100%, 0 100%);
-          clip-path: polygon(0 67%, 100% 67%, 100% 100%, 0 100%);
-  -webkit-animation-path: polygon(0 67%, 100% 67%, 100% 100%, 0 100%);
-}
-header #header_container_burguer .menu {
-  width: 50px;
-  height: 40px;
-  position: absolute;
-  right: 10px;
-}
-header #header_container_burguer .menu .spans {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  cursor: pointer;
-  width: 50px;
-  height: 40px;
-}
-header #header_container_burguer .menu .spans span {
-  width: 50px;
-  height: 8px;
-  background-color: #1d1d1b;
-  border-radius: 10px;
-}
-header #header_container_burguer input {
   display: none;
 }
-header #header_container_burguer input:checked + .button_container {
-  transform: translateX(100%);
-  transition: transform 0.5s ease-in-out;
-}
-header #header_container_burguer .button_container {
-  width: 100%;
-  height: auto;
-  position: absolute;
-  top: 100px;
-  left: -100%;
-  display: flex;
-  flex-direction: column;
-  transition: transform 1s ease-in-out;
-}
-header #header_container_burguer .button_container .button_slider {
-  width: 100%;
-  height: 40px;
-  background: linear-gradient(90deg, rgb(231, 29, 115) 0%, rgb(87, 36, 131) 60%);
-  text-align: center;
-  justify-content: center;
-  transition: 0.35s;
-}
-header #header_container_burguer .button_container .button_slider:hover, header #header_container_burguer .button_container .button_slider:focus {
-  box-shadow: inset 0 0 0 1.4em #e71d73;
-}
-header #header_container_burguer .button_container .button_slider a {
-  color: #ffffff;
-  text-decoration: none;
-  line-height: 40px;
+@media screen and (max-width: 480px) {
+  header #header_container_burguer {
+    display: flex;
+    width: 100%;
+    height: 100px;
+    background-color: #ffffff;
+    position: fixed;
+    align-items: center;
+    justify-content: center;
+  }
+  header #header_container_burguer .img_container {
+    display: flex;
+    justify-self: center;
+  }
+  header #header_container_burguer .img_container img {
+    width: 95px;
+    height: 95px;
+    animation: glitch 1s linear infinite;
+  }
+  header #header_container_burguer .img_container img:before, header #header_container_burguer .img_container img:after {
+    content: attr(title);
+    position: absolute;
+    left: 0;
+  }
+  header #header_container_burguer .img_container img:before {
+    animation: glitchTop 1s linear infinite;
+    -webkit-clip-path: polygon(0 0, 100%, 100% 33%, 0 33%);
+            clip-path: polygon(0 0, 100%, 100% 33%, 0 33%);
+    -webkit-animation-phat: polygon(0 0, 100% 0, 100% 33%, 0 33%);
+  }
+  header #header_container_burguer .img_container img:after {
+    animation: glitchBottom 1.5s linear infinite;
+    -webkit-clip-path: polygon(0 67%, 100% 67%, 100% 100%, 0 100%);
+            clip-path: polygon(0 67%, 100% 67%, 100% 100%, 0 100%);
+    -webkit-animation-path: polygon(0 67%, 100% 67%, 100% 100%, 0 100%);
+  }
+  header #header_container_burguer .menu {
+    width: 50px;
+    height: 40px;
+    position: absolute;
+    right: 10px;
+  }
+  header #header_container_burguer .menu .spans {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    cursor: pointer;
+    width: 50px;
+    height: 40px;
+  }
+  header #header_container_burguer .menu .spans span {
+    width: 50px;
+    height: 8px;
+    background: linear-gradient(-90deg, rgb(231, 29, 115) 0%, rgb(87, 36, 131) 100%);
+    border-radius: 10px;
+  }
+  header #header_container_burguer input {
+    display: none;
+  }
+  header #header_container_burguer input:checked + .button_container {
+    transform: translateX(100%);
+    transition: transform 1s ease-in-out;
+  }
+  header #header_container_burguer .button_container {
+    width: 100%;
+    height: auto;
+    position: absolute;
+    top: 100px;
+    left: -100%;
+    display: flex;
+    flex-direction: column;
+    transition: transform 1s ease-in-out;
+  }
+  header #header_container_burguer .button_container .button_slider {
+    width: 100%;
+    height: 40px;
+    background: linear-gradient(-90deg, rgb(231, 29, 115) 0%, rgb(87, 36, 131) 70%);
+    text-align: center;
+    justify-content: center;
+    transition: box-shadow 0.4s;
+  }
+  header #header_container_burguer .button_container .button_slider:hover, header #header_container_burguer .button_container .button_slider:focus {
+    box-shadow: inset 0 0 0 1.4em #e71d73;
+  }
+  header #header_container_burguer .button_container .button_slider a {
+    color: #ffffff;
+    text-decoration: none;
+    line-height: 40px;
+  }
 }
 
 .naves {
