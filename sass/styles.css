@@ -1,4 +1,3 @@
-@charset "UTF-8";
 * {
   margin: 0;
   padding: 0;
@@ -73,31 +72,19 @@ a {
     transform: translateY(0);
   }
 }
-header {
+header #header_container {
   align-items: center;
   margin: auto;
   align-content: center;
   position: fixed;
-  width: 100%; /* hacemos que la cabecera ocupe el ancho completo de la página */
-  left: 0; /* Posicionamos la cabecera al lado izquierdo */
+  width: 100%;
+  height: auto;
+  left: 0;
   top: 0;
   z-index: 99;
   background-color: #ffffff;
-}
-@media screen and (max-width: 768px) {
-  header {
-    height: 120px;
-  }
-}
-header #header_container {
-  display: grid;
+  display: none;
   grid-template-columns: 1fr 180px 1fr;
-}
-@media screen and (max-width: 768px) {
-  header #header_container {
-    grid-template-columns: 1fr 140px 1fr;
-    height: 100%;
-  }
 }
 header #header_container .button_container {
   width: 148px;
@@ -105,12 +92,6 @@ header #header_container .button_container {
   justify-self: end;
   -webkit-clip-path: polygon(10% 0%, 100% 0, 100% 100%, 0% 100%);
           clip-path: polygon(10% 0%, 100% 0, 100% 100%, 0% 100%);
-}
-@media screen and (max-width: 768px) {
-  header #header_container .button_container {
-    width: 120px;
-    min-width: 100px;
-  }
 }
 header #header_container .button_container.seg {
   justify-self: start;
@@ -128,11 +109,6 @@ header #header_container .button_container .button_slider {
   margin-bottom: 5px;
   transition: 0.35s;
 }
-@media screen and (max-width: 768px) {
-  header #header_container .button_container .button_slider {
-    height: 25px;
-  }
-}
 header #header_container .button_container .button_slider:nth-child(1):hover, header #header_container .button_container .button_slider:nth-child(1):focus {
   box-shadow: inset 0 0 0 1em #e71d73;
 }
@@ -149,31 +125,14 @@ header #header_container .button_container .button_slider a {
   padding: 10px;
   line-height: 30px;
 }
-@media screen and (max-width: 768px) {
-  header #header_container .button_container .button_slider a {
-    font-size: 0.8em;
-    line-height: 25px;
-  }
-}
 header #header_container .img_container {
   display: flex;
   justify-self: center;
-}
-@media screen and (max-width: 768px) {
-  header #header_container .img_container {
-    align-items: center;
-  }
 }
 header #header_container .img_container img {
   width: 150px;
   height: 150px;
   animation: glitch 1s linear infinite;
-}
-@media screen and (max-width: 768px) {
-  header #header_container .img_container img {
-    width: 120px;
-    height: 120px;
-  }
 }
 header #header_container .img_container img:before, header #header_container .img_container img:after {
   content: attr(title);
@@ -192,69 +151,93 @@ header #header_container .img_container img:after {
           clip-path: polygon(0 67%, 100% 67%, 100% 100%, 0 100%);
   -webkit-animation-path: polygon(0 67%, 100% 67%, 100% 100%, 0 100%);
 }
-
-.videos-cont {
-  position: relative;
+header #header_container_burguer {
+  display: flex;
   width: 100%;
-  height: 150vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-.videos-cont img {
-  position: absolute;
-  width: 800px;
-  pointer-events: none;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
-@media screen and (max-width: 768px) {
-  .videos-cont img {
-    width: 640px;
-  }
-}
-.videos-cont video {
-  position: absolute;
-  width: 450px;
-  height: 320px;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -67%);
-  position: absolute;
-}
-@media screen and (max-width: 768px) {
-  .videos-cont video {
-    width: 360px;
-    height: 256px;
-  }
-}
-
-.videos2 {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  height: 100vh;
-}
-.videos2-cont {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 600px;
-  height: 550px;
+  height: 100px;
   background-color: #ffffff;
-  border-radius: 20px;
-  border-width: 10px;
-  border-style: solid;
-  border-color: #e71d73;
-  box-shadow: 0px 0px 10px 8px #e71d73;
+  position: fixed;
+  align-items: center;
+  justify-content: center;
 }
-.videos2-cont video {
+header #header_container_burguer .img_container {
+  display: flex;
+  justify-self: center;
+}
+header #header_container_burguer .img_container img {
+  width: 95px;
+  height: 95px;
+  animation: glitch 1s linear infinite;
+}
+header #header_container_burguer .img_container img:before, header #header_container_burguer .img_container img:after {
+  content: attr(title);
+  position: absolute;
+  left: 0;
+}
+header #header_container_burguer .img_container img:before {
+  animation: glitchTop 1s linear infinite;
+  -webkit-clip-path: polygon(0 0, 100%, 100% 33%, 0 33%);
+          clip-path: polygon(0 0, 100%, 100% 33%, 0 33%);
+  -webkit-animation-phat: polygon(0 0, 100% 0, 100% 33%, 0 33%);
+}
+header #header_container_burguer .img_container img:after {
+  animation: glitchBottom 1.5s linear infinite;
+  -webkit-clip-path: polygon(0 67%, 100% 67%, 100% 100%, 0 100%);
+          clip-path: polygon(0 67%, 100% 67%, 100% 100%, 0 100%);
+  -webkit-animation-path: polygon(0 67%, 100% 67%, 100% 100%, 0 100%);
+}
+header #header_container_burguer .menu {
+  width: 50px;
+  height: 40px;
+  position: absolute;
+  right: 10px;
+}
+header #header_container_burguer .menu .spans {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  cursor: pointer;
+  width: 50px;
+  height: 40px;
+}
+header #header_container_burguer .menu .spans span {
+  width: 50px;
+  height: 8px;
+  background-color: #1d1d1b;
+  border-radius: 10px;
+}
+header #header_container_burguer input {
+  display: none;
+}
+header #header_container_burguer input:checked + .button_container {
+  transform: translateX(100%);
+  transition: transform 0.5s ease-in-out;
+}
+header #header_container_burguer .button_container {
   width: 100%;
-  height: 100%;
-  -o-object-fit: cover;
-     object-fit: cover;
+  height: auto;
+  position: absolute;
+  top: 100px;
+  left: -100%;
+  display: flex;
+  flex-direction: column;
+  transition: transform 1s ease-in-out;
+}
+header #header_container_burguer .button_container .button_slider {
+  width: 100%;
+  height: 40px;
+  background: linear-gradient(90deg, rgb(231, 29, 115) 0%, rgb(87, 36, 131) 60%);
+  text-align: center;
+  justify-content: center;
+  transition: 0.35s;
+}
+header #header_container_burguer .button_container .button_slider:hover, header #header_container_burguer .button_container .button_slider:focus {
+  box-shadow: inset 0 0 0 1.4em #e71d73;
+}
+header #header_container_burguer .button_container .button_slider a {
+  color: #ffffff;
+  text-decoration: none;
+  line-height: 40px;
 }
 
 .naves {

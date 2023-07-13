@@ -4,39 +4,25 @@
 
 header{
 
-    align-items: center;
-    margin: auto;
-    align-content: center;
-    position: fixed;
-    width: 100%; /* hacemos que la cabecera ocupe el ancho completo de la página */
-	left: 0; /* Posicionamos la cabecera al lado izquierdo */
-	top: 0; 
-    z-index: 99;
-    background-color: variables.$primerColor;
-    @include medias.mediaQ(768px){
-        height: 120px;
-        }
-
     #header_container{
-        display: grid;
+        align-items: center;
+        margin: auto;
+        align-content: center;
+        position: fixed;
+        width: 100%;
+        height: auto;
+        left: 0;
+        top: 0;
+        z-index: 99;
+        background-color: #ffffff;
+        display: none;
         grid-template-columns: 1fr 180px 1fr;
-
-        @include medias.mediaQ(768px){
-        grid-template-columns: 1fr 140px 1fr;
-        height: 100%;
-        }
 
         .button_container{
             width: 148px;
             align-self: center;
             justify-self: end;
             clip-path: polygon(10% 0%, 100% 0, 100% 100%, 0% 100%);
-
-            @include medias.mediaQ(768px){
-            width: 120px;
-            min-width: 100px;
-            }
-
 
             &.seg{
                 justify-self: start;
@@ -55,11 +41,6 @@ header{
                 margin-bottom: 5px;
                 transition: 0.35s;
 
-                @include medias.mediaQ(768px){
-                    height: 25px;
-
-                    }
-
                 &:nth-child(1):hover , &:nth-child(1):focus{
                     box-shadow: inset 0 0 0 1em variables.$tercerColor;
                 }
@@ -77,28 +58,17 @@ header{
                     text-decoration: none;
                     padding: 10px;
                     line-height: 30px;
-                    @include medias.mediaQ(768px){
-                        font-size: .8em;
-                        line-height: 25px;
-                        }
                 }
             }
         }
         .img_container{
             display: flex;
             justify-self: center;
-            @include medias.mediaQ(768px){
-                align-items: center;
-                }
+
             img{
                 width: 150px;
                 height: 150px;
                 animation: glitch 1s linear infinite;
-                
-                @include medias.mediaQ(768px){
-                    width: 120px;
-                    height: 120px;
-                    }
 
             &:before, &:after{
 
@@ -118,6 +88,105 @@ header{
             }
             }
             
+        }
+    }
+
+    #header_container_burguer{
+        display: flex;
+        width: 100%;
+        height: 100px;
+        background-color: variables.$primerColor;
+        position: fixed;
+        align-items: center;
+        justify-content: center;
+
+        .img_container{
+            display: flex;
+            justify-self: center;
+            
+            img{
+                width: 95px;
+                height: 95px;
+                animation: glitch 1s linear infinite;
+
+            &:before, &:after{
+
+                content: attr(title);
+                position: absolute;
+                left: 0;
+            }
+            &:before{
+                animation: glitchTop 1s linear infinite;
+                clip-path: polygon(0 0, 100%, 100% 33%, 0 33%);
+                -webkit-animation-phat: polygon(0 0, 100% 0, 100% 33%, 0 33%);
+            }
+            &:after{
+                animation: glitchBottom 1.5s linear infinite;
+                clip-path: polygon(0 67%, 100% 67%, 100% 100%, 0 100%);
+                -webkit-animation-path:  polygon(0 67%, 100% 67%, 100% 100%, 0 100%);
+            }
+            }
+            
+        }
+
+        .menu {
+            width: 50px;
+            height: 40px;
+            position: absolute;
+            right: 10px;
+            
+            .spans{
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+                cursor: pointer;
+                width: 50px;
+                height: 40px;
+
+                span{
+                    width: 50px;
+                    height: 8px;
+                    background-color: variables.$segundoColor;
+                    border-radius: 10px;
+                }
+            }
+        }
+        
+        input{
+            display: none;
+            &:checked + .button_container{
+                transform: translateX(100%);
+                transition: transform 0.5s ease-in-out;
+            }
+        }
+
+        .button_container{
+            width: 100%;
+            height: auto;
+            position: absolute;
+            top: 100px; left: -100%;
+            display: flex;
+            flex-direction: column;
+            transition: transform 1s ease-in-out;
+            
+            .button_slider {
+                
+                width: 100%;
+                height: 40px;
+                background: variables.$gradiente;
+                text-align: center;
+                justify-content: center;
+                transition: 0.35s;
+
+                &:hover , &:focus{
+                    box-shadow: inset 0 0 0 1.4em variables.$tercerColor;
+                }
+                a{
+                    color: variables.$primerColor;
+                    text-decoration: none;
+                    line-height: 40px;
+                }
+            }
         }
     }
 
